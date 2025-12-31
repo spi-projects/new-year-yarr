@@ -1,0 +1,477 @@
+/* ===== CSS Variables - Dark Red Rose Theme ===== */
+:root {
+    --rose-dark: #8B0000;
+    --rose-crimson: #DC143C;
+    --rose-light: #CD5C5C;
+    --rose-pink: #FF69B4;
+    --gold: #FFD700;
+    --white: #FFFFFF;
+    --black: #0a0a0a;
+    --bg-gradient-1: #1a0505;
+    --bg-gradient-2: #0d0000;
+}
+
+/* ===== Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 50%, var(--bg-gradient-1) 100%);
+    background-attachment: fixed;
+    color: var(--white);
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===== Canvas for Fireworks ===== */
+#celebrationCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    display: none;
+}
+
+#celebrationCanvas.active {
+    display: block;
+}
+
+/* ===== Floating Hearts Background ===== */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.6;
+    animation: floatHeart 8s infinite ease-in-out;
+    filter: drop-shadow(0 0 8px var(--rose-pink));
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== Main Container ===== */
+.container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background: radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 70%);
+}
+
+/* ===== SVG Decorations ===== */
+.decoration {
+    position: fixed;
+    width: 120px;
+    height: 120px;
+    opacity: 0.4;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.decoration-top-left {
+    top: 5%;
+    left: 5%;
+    animation: gentleFloat 6s infinite ease-in-out;
+}
+
+.decoration-top-right {
+    top: 5%;
+    right: 5%;
+    animation: gentleFloat 7s infinite ease-in-out 1s;
+}
+
+.decoration-bottom-left {
+    bottom: 5%;
+    left: 5%;
+    animation: gentleFloat 8s infinite ease-in-out 2s;
+}
+
+.decoration-bottom-right {
+    bottom: 5%;
+    right: 5%;
+    animation: gentleFloat 6.5s infinite ease-in-out 0.5s;
+}
+
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
+
+.decoration:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.svg-rose, .svg-sparkle, .svg-heart {
+    filter: drop-shadow(0 0 15px var(--rose-crimson));
+}
+
+/* ===== Title Section ===== */
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.title-text {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--rose-crimson), var(--rose-pink), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(220, 20, 60, 0.5);
+    animation: titleGlow 3s infinite alternate;
+    letter-spacing: 2px;
+}
+
+@keyframes titleGlow {
+    0% {
+        filter: drop-shadow(0 0 20px var(--rose-crimson));
+    }
+    100% {
+        filter: drop-shadow(0 0 40px var(--rose-pink));
+    }
+}
+
+.subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: var(--rose-light);
+    margin-top: 1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    opacity: 0.9;
+}
+
+/* ===== Countdown Display ===== */
+.countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1rem, 3vw, 2rem);
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(139, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(220, 20, 60, 0.3);
+    border-radius: 20px;
+    padding: clamp(1rem, 3vw, 2rem) clamp(1.5rem, 4vw, 3rem);
+    min-width: clamp(80px, 15vw, 140px);
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(220, 20, 60, 0.2),
+                inset 0 0 20px rgba(220, 20, 60, 0.1);
+}
+
+.time-unit:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--rose-crimson);
+    box-shadow: 0 12px 48px rgba(220, 20, 60, 0.4),
+                inset 0 0 30px rgba(220, 20, 60, 0.2);
+    background: rgba(139, 0, 0, 0.3);
+}
+
+.time-value {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--rose-crimson);
+    text-shadow: 0 0 20px var(--rose-crimson),
+                 0 0 40px rgba(220, 20, 60, 0.5);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    color: var(--rose-light);
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.time-separator {
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: var(--rose-pink);
+    font-weight: 300;
+    opacity: 0.6;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* ===== Year Display ===== */
+.year-display {
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--rose-crimson), var(--rose-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+    letter-spacing: 5px;
+    animation: yearPulse 2s infinite alternate;
+}
+
+@keyframes yearPulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px var(--gold));
+    }
+    100% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 40px var(--rose-crimson));
+    }
+}
+
+/* ===== Popup Modal ===== */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.5s ease;
+}
+
+.popup-overlay.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-content {
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.9), rgba(220, 20, 60, 0.8));
+    border: 3px solid var(--rose-crimson);
+    border-radius: 30px;
+    padding: clamp(2rem, 5vw, 4rem);
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(220, 20, 60, 0.6),
+                inset 0 0 40px rgba(255, 255, 255, 0.1);
+    animation: popupSlideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes popupSlideIn {
+    0% {
+        transform: scale(0.3) rotate(-10deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.popup-hearts {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.popup-heart {
+    display: inline-block;
+    animation: floatUpDown 2s infinite ease-in-out;
+}
+
+.popup-heart:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.popup-heart:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes floatUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.popup-title {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 20px var(--rose-pink);
+    font-weight: 700;
+}
+
+.popup-message {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: rgb(230, 185, 185);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    font-family: "Love Ya Like A Sister", cursive;
+}
+
+.popup-sparkles {
+    font-size: 1.5rem;
+    animation: sparkle 1s infinite alternate;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .countdown {
+        gap: 0.5rem;
+    }
+    
+    .time-separator {
+        display: none;
+    }
+    
+    .decoration {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .decoration-top-left,
+    .decoration-top-right {
+        top: 2%;
+    }
+    
+    .decoration-bottom-left,
+    .decoration-bottom-right {
+        bottom: 2%;
+    }
+}
+
+@media (max-width: 480px) {
+    .time-unit {
+        padding: 0.8rem 1rem;
+        min-width: 70px;
+    }
+    
+    .popup-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .decoration {
+        width: 60px;
+        height: 60px;
+        opacity: 0.3;
+    }
+}
+
+/* ===== Interactive Touch Effects ===== */
+@media (hover: none) and (pointer: coarse) {
+    .time-unit:active {
+        transform: scale(0.95);
+    }
+    
+    .decoration:active {
+        opacity: 1;
+    }
+}
+
+/* ===== Browser Compatibility ===== */
+@supports not (backdrop-filter: blur(10px)) {
+    .time-unit {
+        background: rgba(139, 0, 0, 0.5);
+    }
+    
+    .popup-overlay {
+        background: rgba(0, 0, 0, 0.95);
+    }
+}

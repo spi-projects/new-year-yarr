@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="New Year Countdown with Love">
+    <title>New Year Countdown 🌹</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Canvas for fireworks and particles -->
+    <canvas id="celebrationCanvas"></canvas>
+    
+    <!-- Floating hearts background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Main countdown container -->
+    <div class="container">
+        <!-- SVG Decorations -->
+        <div class="decoration decoration-top-left">
+            <svg viewBox="0 0 100 100" class="svg-rose">
+                <defs>
+                    <radialGradient id="roseGradient">
+                        <stop offset="0%" style="stop-color:#DC143C;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+                    </radialGradient>
+                </defs>
+                <circle cx="50" cy="50" r="15" fill="url(#roseGradient)" opacity="0.8"/>
+                <path d="M50,35 Q40,30 35,35 Q30,40 35,45 Q40,50 50,55 Q60,50 65,45 Q70,40 65,35 Q60,30 50,35" fill="url(#roseGradient)"/>
+                <path d="M45,50 Q35,45 30,50 Q25,55 30,60 Q35,65 45,65" fill="url(#roseGradient)" opacity="0.7"/>
+                <path d="M55,50 Q65,45 70,50 Q75,55 70,60 Q65,65 55,65" fill="url(#roseGradient)" opacity="0.7"/>
+                <ellipse cx="50" cy="65" rx="8" ry="5" fill="#8B0000" opacity="0.6"/>
+            </svg>
+        </div>
+        
+        <div class="decoration decoration-top-right">
+            <svg viewBox="0 0 100 100" class="svg-sparkle">
+                <path d="M50,10 L52,45 L50,40 L48,45 Z" fill="#FFD700" opacity="0.9"/>
+                <path d="M50,90 L52,55 L50,60 L48,55 Z" fill="#FFD700" opacity="0.9"/>
+                <path d="M10,50 L45,52 L40,50 L45,48 Z" fill="#FFD700" opacity="0.9"/>
+                <path d="M90,50 L55,52 L60,50 L55,48 Z" fill="#FFD700" opacity="0.9"/>
+                <circle cx="50" cy="50" r="5" fill="#FFF" opacity="0.95"/>
+            </svg>
+        </div>
+        
+        <div class="decoration decoration-bottom-left">
+            <svg viewBox="0 0 100 100" class="svg-heart">
+                <defs>
+                    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FF69B4;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <path d="M50,80 C30,65 10,50 10,35 C10,20 20,15 30,20 C40,25 45,30 50,40 C55,30 60,25 70,20 C80,15 90,20 90,35 C90,50 70,65 50,80 Z" 
+                      fill="url(#heartGradient)" opacity="0.85"/>
+            </svg>
+        </div>
+        
+        <div class="decoration decoration-bottom-right">
+            <svg viewBox="0 0 100 100" class="svg-rose">
+                <circle cx="50" cy="50" r="15" fill="url(#roseGradient)" opacity="0.8"/>
+                <path d="M50,35 Q40,30 35,35 Q30,40 35,45 Q40,50 50,55 Q60,50 65,45 Q70,40 65,35 Q60,30 50,35" fill="url(#roseGradient)"/>
+            </svg>
+        </div>
+        
+        <!-- Title -->
+        <h1 class="title">
+            <span class="title-text">New Year Countdown</span>
+            <span class="subtitle">✨ With Love & Hope ✨</span>
+        </h1>
+        
+        <!-- Countdown Display -->
+        <div class="countdown" id="countdown">
+            <div class="time-unit">
+                <span class="time-value" id="days">00</span>
+                <span class="time-label">Days</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+                <span class="time-value" id="hours">00</span>
+                <span class="time-label">Hours</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+                <span class="time-value" id="minutes">00</span>
+                <span class="time-label">Minutes</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+                <span class="time-value" id="seconds">00</span>
+                <span class="time-label">Seconds</span>
+            </div>
+        </div>
+        
+        <!-- Year Display -->
+        <div class="year-display" id="yearDisplay">2026</div>
+    </div>
+    
+    <!-- Popup Message Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <div class="popup-hearts">
+                <span class="popup-heart">❤️</span>
+                <span class="popup-heart">💕</span>
+                <span class="popup-heart">💖</span>
+            </div>
+            <h2 class="popup-title">🎉 Happy New Year! 🎉</h2>
+            <p class="popup-message" id="popupMessage"></p>
+            <div class="popup-sparkles">✨ ⭐ ✨</div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
