@@ -21,7 +21,7 @@ function getNextNewYear() {
     const nextYear = currentYear + 1;
 
     // Create New Year date in user's local timezone
-    const newYear = new Date(nextYear, 0, 1, 0, 0, 0, 0);
+    const newYear = new Date(2026, 0, 1, 0, 0, 0, 0);
 
     // Update year display
     document.getElementById('yearDisplay').textContent = nextYear;
@@ -282,5 +282,6 @@ document.head.appendChild(style);
 
 // ===== Start Application =====
 init();
+
 
 
