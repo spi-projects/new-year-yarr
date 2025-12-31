@@ -1,5 +1,5 @@
 // test trigger inside updateCountdown function
-const NEW_YEAR_MESSAGE = `madari porte bos 🤬, programmer hote hobe 🤬`; // Add your personalized message here
+const NEW_YEAR_MESSAGE = `madari porte bos 🤬, programmer hote hobe 🤬 --- message from omi ---`; // Add your personalized message here
 
 // ===== Configuration =====
 const canvas = document.getElementById('celebrationCanvas');
@@ -282,4 +282,5 @@ document.head.appendChild(style);
 
 // ===== Start Application =====
 init();
+
 
